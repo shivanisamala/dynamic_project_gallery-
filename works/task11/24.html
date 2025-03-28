@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body id="ser">
+        <div>
+            <!-- You can add content here if needed -->
+        </div>
+        <input placeholder="Enter A" id="input_a"/>
+        <input placeholder="Enter B" id="input_b"/>
+        <button onclick="generate_random_value();">Generate Random Value</button>
+        <div id="output_div"></div>
+
+        <script>
+            let colors = ["red", "gray", "purple", "ocean_blue", "brown"];
+            let random_value = null;  // Declare a global variable for random_value
+
+            function generate_random_value(){
+                let a = parseInt(document.getElementById("input_a").value);
+                let b = parseInt(document.getElementById("input_b").value);
+
+                let random_value = Math.floor((b - a) * Math.random() + a);  // Store the random value in a global variable
+
+                document.getElementById("output_div").innerHTML = random_value;
+
+                let size = colors.length;
+                let idx = Math.floor(Math.random() * size);
+                document.getElementById("output_div").style = "color:" + colors[idx];
+            }
+
+            // Function to remove the content after 3 seconds
+            function remove_everything() {
+                document.getElementById("ser").innerHTML = "";  // Clear the content
+            }
+
+            setInterval(remove_everything, 3000);  // Call remove_everything every 3 seconds
+
+        </script>
+    </body>
+</html>

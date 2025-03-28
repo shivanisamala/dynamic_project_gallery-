@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       body {
+        text-align: center;
+        height: 50%;
+        width: 50%;
+        justify-content: center;
+        margin-left: 330px;
+        background-color: #e0f7fa;
+       }
+       h1 {
+        font-size: 24px;
+        background-color: #ffccbc;
+       }
+       .input-container {
+        display: block;
+        margin-bottom: 15px;
+       }
+       input {
+        padding: 10px;
+        margin: 5px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+       }
+       button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        width: 80%;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+       }
+       button#red {
+        background-color: #f44336;
+       }
+       p {
+        font-size: 30px;
+        height: 50px;
+        text-align: center;
+        background-color: #ffccbc;
+        padding: 10px;
+        margin: 0;
+       }
+       #demo_div {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+       }
+    </style>
+    <script>
+        const students = [];
+
+        function Student(name, studentClass, branch, year) {
+            this.name = name;
+            this.studentClass = studentClass;
+            this.branch = branch;
+            this.year = year;
+            this.describe = function() {
+                return `Student Info: Name: ${this.name}, Class: ${this.studentClass}, Branch: ${this.branch}, Year: ${this.year}`;
+            };
+        }
+
+        function insert() {
+            let name = document.getElementById("name").value;
+            let studentClass = document.getElementById("class").value;
+            let branch = document.getElementById("branch").value;
+            let year = document.getElementById("year").value;
+
+            let newStudent = new Student(name, studentClass, branch, year);
+            students.push(newStudent);
+        }
+
+        function showStudentInfo() {
+            let outputDiv = document.getElementById("demo_div");
+            let output = "<h2>Current Student Information</h2>";
+
+            for (let student of students) {
+                output += student.describe() + "<br>";
+            }
+
+            outputDiv.innerHTML = output;
+        }
+
+        function clearInputs() {
+            document.getElementById("name").value = "";
+            document.getElementById("class").value = "";
+            document.getElementById("branch").value = "";
+            document.getElementById("year").value = "";
+            students.length = 0;
+            clearDisplay();
+        }
+
+        function clearDisplay() {
+            document.getElementById("demo_div").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <p>Student Information</p>
+    <div class="input-container">
+        <input id="name" placeholder="Enter Name">
+        <input id="class" placeholder="Enter Class">
+        <input id="branch" placeholder="Enter Branch">
+        <input id="year" placeholder="Enter Year">
+    </div>
+    <button onclick="insert()">Insert Info</button>
+    <button id="red" onclick="clearInputs()">Clear Inputs</button>
+    <button onclick="showStudentInfo()">Show All</button>
+    <button id="red" onclick="clearDisplay()">Clear Display</button>
+    
+    <div id="demo_div">
+        <h1>Current Students Information:</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function update(){
+                let inputText = document.getElementById("input field").value;
+                
+                // Convert the input text to uppercase
+                let outputText = inputText.toUpperCase();
+                
+                // Set the uppercase value into the output field
+                document.getElementById("output_field").value = outputText;
+            }
+        </script>
+    </head>
+
+    <body>
+        <input id ="input field" placeholder ="Input Text" onkeyup="update();"/>
+        <input id = "output_field" placeholder="Output Text" disabled/>
+    </body>
+    
+</html>

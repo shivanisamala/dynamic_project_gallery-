@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Freelance Job Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .hero {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .job-card {
+            border-radius: 10px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .job-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .job-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .job-footer .job-name {
+            color: red;
+            font-weight: bold;
+        }
+        .btn-small {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        .logo {
+            height: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+            <img src="logo.png" alt="Logo" class="logo"> Open Works
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#" onclick="show404()">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="show404()">Open Positions</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="show404()">New Listing</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Become a Freelance Professional</h1>
+    <p>The Best Place to Find Open Work Positions</p>
+</section>
+
+<!-- Find Work & List a Position -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="p-4 bg-light shadow rounded">
+                <h4>Find Work</h4>
+                <p>Browse from thousands of listed open positions. You will find the position you seek and reach out to the employer directly.</p>
+                <button class="btn btn-dark" onclick="show404()">Browse Positions</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 bg-light shadow rounded">
+                <h4>List a Position</h4>
+                <p>Add a position as per your requirements. The best professionals will reach out to you.</p>
+                <button class="btn btn-primary" onclick="show404()">List Work</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Job Listings -->
+<div class="container mt-5">
+    <h3 class="text-center fw-bold">Browse Open Positions</h3>
+    <div class="row mt-4" id="job-listings">
+        <!-- Job cards will be inserted here dynamically -->
+    </div>
+    <div class="text-center mt-4">
+        <button class="btn btn-dark" onclick="show404()">View All Positions</button>
+    </div>
+</div>
+
+<!-- JavaScript for Dynamic Job Listings -->
+<script>
+    const jobs = [
+        {title: "Java Developer", type: "Full-Time", rate: "$100 / Hour", location: "North Carolina"},
+        {title: "Python Developer", type: "Part-Time", rate: "$200 / Hour", location: "Virginia"},
+        {title: "Laravel Developer", type: "Contractual", rate: "$100 / Hour", location: "Washington"}
+    ];
+
+    const jobListings = document.getElementById("job-listings");
+
+    jobs.forEach(job => {
+        const jobCard = document.createElement("div");
+        jobCard.classList.add("col-md-4", "mb-4");
+
+        jobCard.innerHTML = `
+            <div class="bg-light p-4 job-card shadow">
+                <small class="text-muted">${job.type}</small>
+                <h5 class="fw-bold">${job.title}</h5>
+                <p>${job.rate}</p>
+                <p class="text-primary">${job.location}</p>
+                <div class="job-footer">
+                    <span class="job-name">${job.title}</span>
+                    <button class="btn btn-primary btn-small" onclick="show404()">Details</button>
+                </div>
+            </div>
+        `;
+
+        jobListings.appendChild(jobCard);
+    });
+
+    function show404() {
+        window.open("task17-1.html", "_blank");
+    }
+</script>
+
+</body>
+</html>
